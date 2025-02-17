@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wardah Latifah Nuryani - Portfolio</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #fda3a3;
+      --secondary-color: #FFE2E2;
+      --accent-color: #f8baba;
+      --text-color: #2d3436;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      color: var(--text-color);
+      line-height: 1.7;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--primary-color);
+      text-align: center;
+    }
+
+    /* Header Styles */
+    header {
+      background: linear-gradient(135deg, var(--primary-color), #a8c0ff);
+      padding: 70 0 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent 0%, rgba(255, 255, 255, 0.1) 100%);
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      margin-bottom: 15px;
+      position: relative;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: white;
+      margin-bottom: 0;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      padding: 15px 0;
+      list-style: none;
+    }
+
+    nav ul li a {
+      font-weight: 500;
+      padding: 10px 20px;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      color: var(--text-color);
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Responsive Navigation */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      padding: 15px;
+    }
+
+    .hamburger.active+ul {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      right: 0;
+      top: 60px;
+      background: rgba(255, 255, 255, 0.95);
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .hamburger.active+ul li {
+      padding: 15px 0;
+    }
+
+    .hamburger.active+ul li a {
+      padding: 10px 0;
+    }
+
+    /* Profile Section */
+    .profile-section {
+      text-align: center;
+      margin: -80px auto 40px;
+      position: relative;
+      max-width: 800px;
+    }
+
+    .profile-img {
+      width: 200px;
+      height: 200px;
+      margin-top: 100px;
+      margin-bottom: 40px;
+      border-radius: 50%;
+      border: 5px solid white;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .profile-img:hover {
+      transform: scale(1.05);
+    }
+
+    .profile-section h2 {
+      font-size: 2rem;
+      margin: 20px 0 10px;
+    }
+
+    .profile-section p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    /* Timeline Style for Experience */
+    .timeline {
+      position: relative;
+      padding: 40px 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      width: 2px;
+      height: 100%;
+      background: var(--secondary-color);
+    }
+
+    .timeline-item {
+      position: relative;
+      width: 50%;
+      padding: 20px 40px;
+    }
+
+    .timeline-item:nth-child(odd) {
+      left: 0;
+      text-align: right;
+    }
+
+    .timeline-item:nth-child(even) {
+      left: 50%;
+    }
+
+    .timeline-item h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    /* Project Cards */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      padding: 20px;
+      padding-top: 20px;
+      justify-items: center;
+    }
+
+    .project-card {
+      background: linear-gradient(135deg, #ffffff, #f8f9fa);
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .project-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    }
+
+    .project-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .project-card p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    .project-card .cta-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #ff7e5f;
+      color: white;
+      font-weight: bold;
+      border-radius: 25px;
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .project-card .cta-button:hover {
+      background-color: #feb47b;
+    }
+
+    .section-title {
+      text-align: center;
+      padding-top: 50px;
+    }
+
+    /* Adding some styling for responsiveness */
+    @media (max-width: 768px) {
+      .project-grid {
+        padding: 15px;
+      }
+
+      .project-card {
+        padding: 20px;
+      }
+
+      nav ul {
+        display: none;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .social-link {
+      font-size: 1.5rem;
+      padding: 15px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      background: white;
+      color: var(--primary-color);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #292b2c;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      width: 100%;
+    }
+
+    footer .footer-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    footer .footer-container p {
+      margin: 0;
+    }
+
+    footer .footer-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    footer .footer-links a {
+      color: #fff;
+      background-color: #ffcc00;
+      padding: 10px 15px;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    footer .footer-links a:hover {
+      background-color: #fff;
+      color: #292b2c;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section-animate {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+
+      .timeline::before {
+        left: 30px;
+      }
+
+      .timeline-item {
+        width: 100%;
+        left: 0 !important;
+        padding-left: 70px;
+        text-align: left !important;
+      }
+    }
+
+    /* Contact Section */
+    .contact-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 50px 20px;
+      background: #f8f9fa;
+    }
+
+    .contact-form,
+    .contact-details {
+      flex: 1;
+      max-width: 500px;
+      margin: 20px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      background: white;
+    }
+
+    .contact-form h2,
+    .contact-details h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    .contact-form form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    .contact-form button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background: var(--primary-color);
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .contact-form button:hover {
+      background: var(--secondary-color);
+    }
+
+    .contact-details p {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Wardah Latifah Nuryani</h1>
+    <p>Health Information Management Specialist</p>
+  </header>
+
+  <nav>
+    <div class="hamburger"><i class="fas fa-bars"></i></div>
+    <ul>
+      <li><a href="#profile" class="active">Profile</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#work-projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main class="main-container">
+    <section id="profile" class="profile-section section-animate">
+      <img src="profil.jpeg" alt="Profile" class="profile-img">
+      <h2>Innovative Health Information Specialist</h2>
+      <p class="tagline">Combining technical expertise with creative problem-solving</p>
+      <p>A student majoring in Health Information Management program at Vocational School UGM, particulary in managing
+        health data and information, with hands-on experience in disease coding and healthcare management planning.
+        Skilled in design, editing, and event organizing, supported by excellent time management, strong communication
+        abilities, and a deep sense of responsibility and dedication to delivering tasks with professionalism.</p>
+    </section>
+    <!-- Education Section -->
+    <section id="education" class="section-animate">
+      <h2 class="section-title">Education:</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>Universitas Gadjah Mada | Health Information Management | 2022</h3>
+        </div>
+        <div class="timeline-item">
+          <h3>SMA N 1 Kasihan | Mathematics and Natural Sciences Program | 2019</h3>
+        </div>
+      </div>
+    </section>
+    <!-- Experience Section with Timeline -->
+    <section id="experience" class="section-animate">
+      <h2 class="section-title">Organizational & Committee Experience:</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>IMARMIKI | Social Department | 2023-2024</h3>
+        </div>
+        <div class="timeline-item">
+          <h3>KMD LIKES | Event Organizer Division | 2022-2024</h3>
+        </div>
+        <div class="timeline-item">
+          <h3>MRF | Event Organizer Division | 2022-2024</h3>
+        </div>
+        <div class="timeline-item">
+          <h3>Imarmiki Competition Day | Event Division Coordinator | IMARMIKI 2024</h3>
+        </div>
+        <div class="timeline-item">
+          <h3>International Seminar | Event Division Staff | IMARMIKI 2024</h3>
+        </div>
+        <div class="timeline-item">
+          <h3>Pionir Permadani | Department Coordinator | UGM, 2024</h3>
+        </div>
+        <div class="timeline-item">
+          <h3>Global Impact Initiative | Chief Executive | IMARMIKI, 2024</h3>
+        </div>
+        <div class="timeline-item">
+          <h3>Gebyar Rekam Medis | Chief Executive | UGM, 2024</h3>
+        </div>
+        <div class="timeline-item">
+          <h3>Gebyar Rekam Medis | Event Division Staff | UGM, 2023</h3>
+        </div>
+        <div class="timeline-item">
+          <h3>Kuliah Umum MIK & IG-HIM | Event Division Staff | UGM, 2023</h3>
+        </div>
+        <div class="timeline-item">
+          <h3>POVVAF | VAF Division Staff | UGM, 2023</h3>
+        </div>
+        <div class="timeline-item">
+          <h3>UGM Campus Tour | Co-Facilitator | UGM, 2023</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work & Project Experience Section -->
+    <section id="work-projects" class="section-animate">
+      <h2 class="section-title">Work & Project Experience:</h2>
+      <div class="project-grid">
+        <div class="project-card">
+          <h3>Practical Assistant | Medical Records Management Course | DLIKES, 2024</h3>
+        </div>
+        <div class="project-card">
+          <h3>Comprehensive Internship | Dr. Soeradji Tirtonegoro Hospital - Medical Records and Patient Assurance
+            Installation | Klaten, 2025</h3>
+        </div>
+        <div class="project-card">
+          <h3>Internship III | Nanggulan Community Health Center – Medical Records Unit | Kulon Progo, 2024</h3>
+        </div>
+        <div class="project-card">
+          <h3>Internship I-II | PKU Muhammadiyah Yogyakarta Hospital - Medical Records Unit | Yogyakarta, 2023</h3>
+        </div>
+        <div class="project-card">
+          <h3>Project Day I: Design Interface for Accurate Diagnosis Coding: "ICD CODE CORRECTOR"</h3>
+        </div>
+        <div class="project-card">
+          <h3>Project Day II: Futuristic UKRM Layout Design with K3 Approach</h3>
+        </div>
+        <div class="project-card">
+          <h3>Project Day III: User Interface Design for SOAP Form in Hospital Management Information System</h3>
+        </div>
+        <div class="project-card">
+          <h3>Project Day IV: Design Interface for Accuracy of Code and Health Financing System Using AI Technology:
+            "INTELLICODE"</h3>
+        </div>
+        <div class="project-card">
+          <h3>Project Day V: Health Epidemiology Start-Up Design: "ZONASEHAT"</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+      <div class="contact-form">
+        <h2>Contact Us</h2>
+        <form action="#">
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <textarea placeholder="Your Message" rows="5" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+      <div class="contact-details">
+        <h2>Contact Information</h2>
+        <p><strong>Email:</strong>wardahlatifahnuryani@mail.ugm.ac.id</p>
+        <p><strong>Phone:</strong> +62 877 36239440</p>
+        <p><strong>Address:</strong> Suryodiningratan, Mantrijeron, Yogyakarta</p>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/wardahlatifahnuryani" class="social-link"><i
+              class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/latifahnz" class="social-link"><i class="fab fa-github"></i></a>
+          <a href="https://instagram.com/latifahnz" class="social-link"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <p>&copy; 2025 Wardah Latifah Nuryani. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/wardahlatifahnuryani" class="social-link"><i
+            class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/latifahnz" class="social-link"><i class="fab fa-github"></i></a>
+        <a href="https://instagram.com/latifahnz" class="social-link"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Add intersection observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('section-animate');
+        }
+      });
+    });
+
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
+
+    // Smooth scroll for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Hamburger menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('nav ul');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('nav ul li a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+
+</html>
