@@ -621,13 +621,36 @@
     <section id="contact" class="contact-section">
       <div class="contact-form">
         <h2>Contact Us</h2>
-        <form action="wardahlatifahnuryani@mail.ugm.ac.id">
+        <form action="send_email.php" method="POST">
           <input type="text" placeholder="Your Name" required>
           <input type="email" placeholder="Your Email" required>
           <textarea placeholder="Your Message" rows="5" required></textarea>
           <input type="submit" value="Send Message">
         </form>
       </div>
+
+      <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = htmlspecialchars($_POST["name"]);
+    $email = htmlspecialchars($_POST["email"]);
+    $message = htmlspecialchars($_POST["message"]);
+
+    $to = "wardahlatifahnuryani@mail.ugm.ac.id"; 
+    $subject = "New Contact Form Submission from " . $name;
+    $headers = "From: " . $email . "\r\n" .
+               "Reply-To: " . $email . "\r\n" .
+               "Content-Type: text/plain; charset=UTF-8";
+
+    $body = "Name: $name\nEmail: $email\n\nMessage:\n$message";
+
+    if (mail($to, $subject, $body, $headers)) {
+        echo "Message sent successfully!";
+    } else {
+        echo "Failed to send message.";
+    }
+}
+?>
+
       <div class="contact-details">
         <h2>Contact Information</h2>
         <p><strong>Email:</strong> wardahlatifahnuryani@mail.ugm.ac.id</p>
